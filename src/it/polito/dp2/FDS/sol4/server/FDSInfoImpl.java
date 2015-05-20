@@ -1,5 +1,6 @@
 package it.polito.dp2.FDS.sol4.server;
 
+import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
@@ -7,7 +8,7 @@ import javax.jws.WebService;
 import javax.xml.datatype.XMLGregorianCalendar;
 
 import it.polito.dp2.FDS.Aircraft;
-import it.polito.dp2.FDS.FlightReader;
+import it.polito.dp2.FDS.FlightInstanceStatus;
 import it.polito.dp2.FDS.MalformedArgumentException;
 import it.polito.dp2.FDS.sol4.service.Info.FDSInfo;
 import it.polito.dp2.FDS.sol4.service.Info.GetAircraftsFault;
@@ -57,6 +58,7 @@ public class FDSInfoImpl implements FDSInfo {
 	}
 
 	/*********************/
+	// gli passo model ma mica lo uso
 	@Override
 	public List<AircraftType> getAircrafts(String model)
 			throws GetAircraftsFault {
@@ -76,8 +78,8 @@ public class FDSInfoImpl implements FDSInfo {
 		List<FlightReaderType> returnList = null;
 		try {
 			// retrieve data
-			//List<FlightReaderType> list = monitor.getFlights(departure, destination, cf.timeTypeTOtime(time));
-			List<FlightReaderType> list = monitor.getFlights(null, null, null);
+			List<FlightReaderType> list = monitor.getFlights(departure, destination, cf.timeTypeTOtime(time));
+			//List<FlightReaderType> list = monitor.getFlights(null, null, null);
 			returnList = new CopyOnWriteArrayList<FlightReaderType>();
 			// convert every FlightReader
 			for ( FlightReaderType frt : list ) {
@@ -99,12 +101,17 @@ public class FDSInfoImpl implements FDSInfo {
 			XMLGregorianCalendar date, StatusType status)
 			throws GetInstancesFault {
 		
-		//FlightInstanceStatus fistatus = cf.statusTOfiStatus(status);
-		//GregorianCalendar gcdate = cf.xmlGregCalTOgregCal(date);
+		if ( flightNumber == null || flightNumber.isEmpty() || date == null ) {
+			System.out.println("flightNumber or date was null. (getInstances)");
+			return null;
+		}
+		
+		FlightInstanceStatus fistatus = cf.statusTOfiStatus(status);
+		GregorianCalendar gcdate = cf.xmlGregCalTOgregCal(date);
 		try {
 			// retrieve data
-			//List<FlightInstanceReaderType> db = monitor.getFlightInstances(flightNumber, gcdate, fistatus);
-			List<FlightInstanceReaderType> db = monitor.getFlightInstances(null, null, null);
+			List<FlightInstanceReaderType> db = monitor.getFlightInstances(flightNumber, gcdate, fistatus);
+			//List<FlightInstanceReaderType> db = monitor.getFlightInstances(null, null, null);
 			List<FlightInstanceReaderType> list = new CopyOnWriteArrayList<FlightInstanceReaderType>();
 			// populate the list
 			for (FlightInstanceReaderType firt : db) {
@@ -124,8 +131,16 @@ public class FDSInfoImpl implements FDSInfo {
 		try {
 			List<PassengerReaderType> list = new CopyOnWriteArrayList<PassengerReaderType>();
 			// retrieve corresponding FlightInstanceReader
-			FlightInstanceReaderType firt = monitor.getFlightInstance(flightNumber, cf.xmlGregCalTOgregCal(date));
+			FlightInstanceReaderType firt = monitor.getFlightInstance(flightNumber, date.toGregorianCalendar());
 			// populate the list
+			if (firt == null) {
+				System.out.println("Flight Instance not found.");
+				return null;
+			}
+			if (firt.getPassengers() == null) {
+				System.out.println("Flight Instance doesn't have passengers.");
+				return null;
+			}
 			for ( PassengerReaderType prt : firt.getPassengers().getPassengerReader() ) {
 				list.add(prt);
 			}
@@ -175,8 +190,6 @@ public class FDSInfoImpl implements FDSInfo {
 	public FlightInstanceReaderType getInstance(String flightNumber,
 			XMLGregorianCalendar date) throws GetInstanceFault {
 		try {
-			System.out.println("year: "+date.getYear()+" month: "+date.getMonth()+" day: "+date.getDay()
-					+" hour: "+date.getHour()+" minute: "+date.getMinute());
 			FlightInstanceReaderType firt = monitor.getFlightInstance(flightNumber, date.toGregorianCalendar());
 			return firt;
 		} catch (Exception e) {

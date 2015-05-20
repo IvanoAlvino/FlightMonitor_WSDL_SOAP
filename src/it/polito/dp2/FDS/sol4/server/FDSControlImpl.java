@@ -96,9 +96,10 @@ public class FDSControlImpl implements FDSControl{
 					throw new RegisterPassengerNotFoundErrorMessage("Passenger not found, is null.", 
 							new RegisterPassengerNotFoundType());
 				}
-				//if ( prt.getSeatID() != null || prt.getSeatID().isEmpty()) {
-				prt.setBoarded(true);
-				//}
+				if ( prt.getName().startsWith(parameters.getPassenger()))
+					if ( prt.getSeatID() != null ) {
+						prt.setBoarded(true);
+					}
 			}
 			ret.setReturnValue(true);
 			return ret;

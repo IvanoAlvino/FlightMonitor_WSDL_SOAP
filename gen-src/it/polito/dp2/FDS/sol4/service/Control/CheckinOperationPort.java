@@ -35,9 +35,9 @@ public interface CheckinOperationPort {
      * @param flightNumber
      * @param date
      * @param gate
-     * @throws InstanceNotFoundMessage
      * @throws ServiceUnavaibleMessage
      * @throws PassengerAlreadyCheckinFault
+     * @throws InstanceNotFoundMessage
      */
     @WebMethod(operationName = "CheckInOperation", action = "http://www.example.org/FDSControl/CheckInOperation")
     @RequestWrapper(localName = "CheckInOperation", targetNamespace = "http://www.example.org/FDSControl/", className = "it.polito.dp2.FDS.sol4.service.Control.CheckInOperationRequestType")
