@@ -17,7 +17,7 @@ import javax.xml.ws.WebServiceFeature;
  * Generated source version: 2.2
  * 
  */
-@WebServiceClient(name = "CheckInOperationService", targetNamespace = "http://www.example.org/FDSControl/", wsdlLocation = "file:/Users/ivano/Dropbox/Assignment4a/wsdl/FDSControl.wsdl")
+@WebServiceClient(name = "CheckInOperationService", targetNamespace = "http://www.example.org/FDSControl/", wsdlLocation = "file:/Users/ivano/Desktop/Assignment4b/wsdl/FDSControl.wsdl")
 public class CheckInOperationService
     extends Service
 {
@@ -30,7 +30,7 @@ public class CheckInOperationService
         URL url = null;
         WebServiceException e = null;
         try {
-            url = new URL("file:/Users/ivano/Dropbox/Assignment4a/wsdl/FDSControl.wsdl");
+            url = new URL("file:/Users/ivano/Desktop/Assignment4b/wsdl/FDSControl.wsdl");
         } catch (MalformedURLException ex) {
             e = new WebServiceException(ex);
         }

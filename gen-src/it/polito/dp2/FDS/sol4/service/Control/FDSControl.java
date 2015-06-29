@@ -33,9 +33,9 @@ public interface FDSControl {
      * @param date
      * @return
      *     returns boolean
+     * @throws InstanceNotFoundMessage
      * @throws ServiceUnavaibleMessage
      * @throws InstanceYetBoardedError
-     * @throws InstanceNotFoundMessage
      */
     @WebMethod(operationName = "BoardingInstance", action = "http://www.example.org/FDSControl/BoardingInstance")
     @WebResult(name = "returnValue", targetNamespace = "")
@@ -55,8 +55,8 @@ public interface FDSControl {
      * @return
      *     returns it.polito.dp2.FDS.sol4.service.Control.RegisterPassengerResponseType
      * @throws RegiterInstanceNotFoundError
-     * @throws ServiceUnavaibleMessage
      * @throws RegisterPassengerNotFoundErrorMessage
+     * @throws ServiceUnavaibleMessage
      * @throws InstanceNotBookedFault
      */
     @WebMethod(operationName = "RegisterPassenger", action = "http://www.example.org/FDSControl/RegisterPassenger")
@@ -74,8 +74,8 @@ public interface FDSControl {
      * @param date
      * @return
      *     returns java.util.List<it.polito.dp2.FDS.sol4.service.xsdpack.PassengerReaderType>
-     * @throws ServiceUnavaibleMessage
      * @throws InstanceNotFoundMessage
+     * @throws ServiceUnavaibleMessage
      */
     @WebMethod(action = "http://www.example.org/FDSControl/getPassengers")
     @WebResult(name = "Passengers", targetNamespace = "")

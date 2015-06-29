@@ -46,6 +46,20 @@ serviceName="FDSInfoService",
 targetNamespace="http://www.example.org/FDSInfo/"
 )
 
+/* It's the service that allows collecting Information over a Flight System 
+ * 
+ * Permitted Operations:
+ * 		- getAircrafts(model) = retrieve Aircraft with given model
+ * 		- getFlights(departure, destination, time) = retrieve a list of flights with given dep, dest, and time.
+ * 		- getInstances(flightNumber, date, status) = retrieve a flight instance with given flightNumber, date, status
+ * 		- getPassengers(date, flightNUmber) = get passengers of a flight instance with given date and flightNumber
+ * 		- getPassenger(date, flightNumber, name) = returns the passenger whoich name starts with 'name' from 
+ * 			flight instance with given date and flightNumber.
+ * 		- getFlight(flightNumber) = retrieve the flight with flightNumber.
+ * 		- getInstance(flightNumber, date) = retrieve a flight Instance with given flightNumber and date.
+ * 		- getAll() = retrieve all the informations
+ * */ 
+
 public class FDSInfoImpl implements FDSInfo {
 	
 	private MyFlightMonitor monitor = null;
@@ -64,7 +78,9 @@ public class FDSInfoImpl implements FDSInfo {
 			throws GetAircraftsFault {
 		List<AircraftType> list = new CopyOnWriteArrayList<AircraftType>();
 		for ( Aircraft a : monitor.getAircrafts()) {
-			list.add(cf.aircraftTOaircraftType(a));
+			if (a.model.compareToIgnoreCase(model) == 0) { // not tested
+				list.add(cf.aircraftTOaircraftType(a));
+			}
 		}
 		return list;
 	}

@@ -22,6 +22,8 @@ import it.polito.dp2.FDS.sol4.service.xsdpack.SeatsType;
 import it.polito.dp2.FDS.sol4.service.xsdpack.StatusType;
 import it.polito.dp2.FDS.sol4.service.xsdpack.TimeType;
 
+/* It'a a conversion class for changing between types */
+
 public class ConvertFactory {
 	
 	public Time timeTypeTOtime(TimeType tt) {

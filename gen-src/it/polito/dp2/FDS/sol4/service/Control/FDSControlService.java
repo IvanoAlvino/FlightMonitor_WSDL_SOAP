@@ -17,7 +17,7 @@ import javax.xml.ws.WebServiceFeature;
  * Generated source version: 2.2
  * 
  */
-@WebServiceClient(name = "FDSControlService", targetNamespace = "http://www.example.org/FDSControl/", wsdlLocation = "file:/Users/ivano/Dropbox/Assignment4a/wsdl/FDSControl.wsdl")
+@WebServiceClient(name = "FDSControlService", targetNamespace = "http://www.example.org/FDSControl/", wsdlLocation = "file:/Users/ivano/Desktop/Assignment4b/wsdl/FDSControl.wsdl")
 public class FDSControlService
     extends Service
 {
@@ -30,7 +30,7 @@ public class FDSControlService
         URL url = null;
         WebServiceException e = null;
         try {
-            url = new URL("file:/Users/ivano/Dropbox/Assignment4a/wsdl/FDSControl.wsdl");
+            url = new URL("file:/Users/ivano/Desktop/Assignment4b/wsdl/FDSControl.wsdl");
         } catch (MalformedURLException ex) {
             e = new WebServiceException(ex);
         }

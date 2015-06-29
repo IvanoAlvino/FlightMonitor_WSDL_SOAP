@@ -32,8 +32,8 @@ public interface OtherOperationPort {
      * @param date
      * @return
      *     returns boolean
-     * @throws ServiceUnavaibleMessage
      * @throws InstanceNotFoundMessage
+     * @throws ServiceUnavaibleMessage
      */
     @WebMethod(action = "http://www.example.org/FDSControl/cancelInstance")
     @WebResult(name = "returnValue", targetNamespace = "")
@@ -57,8 +57,8 @@ public interface OtherOperationPort {
      * @param date
      * @return
      *     returns boolean
-     * @throws ServiceUnavaibleMessage
      * @throws InstanceNotFoundMessage
+     * @throws ServiceUnavaibleMessage
      */
     @WebMethod(operationName = "ChangeDelay", action = "http://www.example.org/FDSControl/ChangeDelay")
     @WebResult(name = "returnValue", targetNamespace = "")
@@ -84,8 +84,8 @@ public interface OtherOperationPort {
      * @param gate
      * @return
      *     returns java.lang.String
-     * @throws ServiceUnavaibleMessage
      * @throws InstanceNotFoundMessage
+     * @throws ServiceUnavaibleMessage
      */
     @WebMethod(operationName = "ChangeGate", action = "http://www.example.org/FDSControl/ChangeGate")
     @WebResult(name = "returnValue", targetNamespace = "")

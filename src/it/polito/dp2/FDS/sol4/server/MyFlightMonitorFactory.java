@@ -7,6 +7,10 @@ import it.polito.dp2.FDS.FlightMonitor;
 import it.polito.dp2.FDS.FlightMonitorException;
 import it.polito.dp2.FDS.FlightReader;
 
+/* It's my Implementation of Flight Monitor. It fills the informations starting from a
+ * FlightMonitor type.
+ */
+
 public class MyFlightMonitorFactory {
 	
 	private MyFlightMonitor monitor = null;

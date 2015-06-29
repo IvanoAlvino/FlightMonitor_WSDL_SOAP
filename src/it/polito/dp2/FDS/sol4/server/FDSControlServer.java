@@ -11,6 +11,11 @@ import it.polito.dp2.FDS.FlightMonitorFactory;
 import it.polito.dp2.FDS.FactoryConfigurationError;
 import it.polito.dp2.FDS.FlightMonitorException;
 
+/* This is the server. 
+ * Initialize the server by getting a MyFlightMonitor from a FlightMonitor.
+ * Then it publishes the xsd files.
+ * Lastly, it publishes the two services FDSControlImpl e FDSInfoImpl. */
+
 public class FDSControlServer {
 
 	private static final int N_THREADS = 10;

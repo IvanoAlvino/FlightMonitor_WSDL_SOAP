@@ -16,6 +16,8 @@ import it.polito.dp2.FDS.sol4.service.xsdpack.FlightInstanceReaderType;
 import it.polito.dp2.FDS.sol4.service.xsdpack.FlightReaderType;
 import it.polito.dp2.FDS.sol4.service.xsdpack.TimeType;
 
+/* Provides an Interface for reading all the Flight System Information */
+
 public class MyFlightMonitor {
 	
 	private Set<Aircraft> Aircrafts = new HashSet<Aircraft>();

@@ -15,6 +15,9 @@ import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import javax.xml.datatype.XMLGregorianCalendar;
 
+/* The Serializer prints in an output file all the informations
+ * regarding a boarding operation. */
+
 
 public class MySerializer {
 

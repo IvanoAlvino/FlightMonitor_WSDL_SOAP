@@ -56,8 +56,8 @@ public interface FDSInfo {
      * @param destination
      * @return
      *     returns java.util.List<it.polito.dp2.FDS.sol4.service.xsdpack.FlightReaderType>
-     * @throws GetFlightsFault
      * @throws GetFlightsParamErr
+     * @throws GetFlightsFault
      */
     @WebMethod(action = "http://www.example.org/FDSInfo/getFlights")
     @WebResult(name = "Flights", targetNamespace = "")

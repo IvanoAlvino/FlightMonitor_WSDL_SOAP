@@ -18,6 +18,9 @@ import it.polito.dp2.FDS.sol4.service.Control.RegiterInstanceNotFoundError;
 import it.polito.dp2.FDS.sol4.service.Control.ServiceUnavaibleMessage;
 import it.polito.dp2.FDS.sol4.service.xsdpack.PassengerReaderType;
 
+/* reads a xml with boarding operations using a Parser, then start boarding phase (if requested) 
+ * sending to the server a list of passengers to be boarded.
+ * Write list of added passengers to outputXML using a Serializer. */
 
 public class FDSControlClient {
 	

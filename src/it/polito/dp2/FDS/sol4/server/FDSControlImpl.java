@@ -33,6 +33,16 @@ serviceName="FDSControlService",
 targetNamespace="http://www.example.org/FDSControl/"
 )
 
+/* It's the webservice that allows control over the Flight System. 
+ * 
+ * Permitted Operations:
+ *     - boardingInstance(flightNumber, date) = search the flight with given number and date, 
+ *       and sets its status to "BOARDING" if it was in "CHECKINGIN" status.
+ *     - registerPassenger(passengerRequest) = search the correct flight and date, search the passenger in this flight,
+ *     	 if found sets its boarding flag to true.
+ *     - getPassengers(date, flightNumber) = return a list of boarded passengers for flight with given date and number. 
+ */
+
 public class FDSControlImpl implements FDSControl{
 	
 	private MyFlightMonitor monitor = null;
@@ -76,7 +86,6 @@ public class FDSControlImpl implements FDSControl{
 			throws InstanceNotBookedFault,
 			RegisterPassengerNotFoundErrorMessage,
 			RegiterInstanceNotFoundError, ServiceUnavaibleMessage {
-		
 		RegisterPassengerResponseType ret = new RegisterPassengerResponseType();
 		try {
 			// retrieve the specific flight instance

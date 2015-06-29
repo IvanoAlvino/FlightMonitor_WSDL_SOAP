@@ -15,6 +15,8 @@ import org.xml.sax.SAXException;
 import it.polito.dp2.FDS.FlightMonitorException;
 import it.polito.dp2.FDS.sol4.client.xsdBoarding.BoardingType;
 
+/* Parser will read informations out of a XML file */
+
 public class MyParser {
 	
 	// Variables
@@ -62,7 +64,7 @@ public class MyParser {
 			// No warning
 			@SuppressWarnings("unchecked")
 			
-			// Unmarshal
+			// Unmarshall
 			JAXBElement<BoardingType> root = (JAXBElement<BoardingType>) u.unmarshal(file);
 			boarding = root.getValue();
 			
